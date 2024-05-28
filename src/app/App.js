@@ -1,11 +1,11 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 import Categorias from './components/Categorias';
 import Productos from './components/Productos';
 import DetalleProducto from './components/DetalleProducto';
 import Carrito from './components/Carrito';
 
 const App = () => {
-    const [categoria, setCategorias] = useState(null);
+    const [categoria, setCategoria] = useState(null); // Corrección aquí
     const [idProductoSeleccionado, setIdProductoSeleccionado] = useState(null);
     const [elementosCarrito, setElementosCarrito] = useState(
         JSON.parse(sessionStorage.getItem('elementosCarrito')) || []
@@ -20,12 +20,13 @@ const App = () => {
     return (
         <div>
             <h1>Tienda</h1>
-            <Categorias seleccionarCategoria={setCategorias}/>
-            <Productos categoria={categoria} seleccionarProductos={setIdProductoSeleccionado}/>
-            <DetalleProducto idProducto={idProductoSeleccionado} agregarAlCarrito={agregarAlCarrito}/>
-            <Carrito elementosCarrito={elementosCarrito}/>
+            <Categorias seleccionarCategoria={setCategoria} />
+            <Productos categoria={categoria} seleccionarProducto={setIdProductoSeleccionado} /> {/* Corrección aquí */}
+            <DetalleProducto idProducto={idProductoSeleccionado} agregarAlCarrito={agregarAlCarrito} />
+            <Carrito elementosCarrito={elementosCarrito} />
         </div>
     );
 };
 export default App;
+
 
