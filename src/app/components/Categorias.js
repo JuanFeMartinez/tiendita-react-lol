@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './globals.css';
 
 const Categorias = ({ seleccionarCategoria }) => {
   const [categorias, setCategorias] = useState([]);
@@ -15,12 +16,19 @@ const Categorias = ({ seleccionarCategoria }) => {
       .catch(error => console.error('Error al obtener las categorias:', error));
   }, []);
 
+  const nomCategorias = {
+    "electronics": "Electrónicos",
+    "jewelery": "Joyería",
+    "men's clothing": "Ropa para Hombres",
+    "women's clothing": "Ropa para Mujeres",
+  };
+
   return (
     <div>
-      <h2>Categorias</h2>
+      <h2 className="titulos">Categorias</h2>
       <ul>
         {categorias.map((categoria) => (
-          <li key={categoria} onClick={() => seleccionarCategoria(categoria)}>{categoria}</li>
+          <li key={categoria} onClick={() => seleccionarCategoria(categoria)}>{nomCategorias[categoria]}</li>
         ))}
       </ul>
     </div>

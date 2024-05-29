@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import './globals.css';
 
 const DetalleProducto = ({ idProducto, agregarAlCarrito }) => {
   const [producto, setProducto] = useState(null);
@@ -24,7 +25,8 @@ const DetalleProducto = ({ idProducto, agregarAlCarrito }) => {
       <h2>{producto.title}</h2>
       <p>{producto.description}</p>
       <p>Precio: ${producto.price}</p>
-      <button onClick={() => agregarAlCarrito(producto)}>Agregar al Carrito</button>
+      <img src={producto.image}></img>
+      <button className="botones" onClick={() => agregarAlCarrito(producto)}>Agregar al Carrito</button>
     </div>
   );
 };

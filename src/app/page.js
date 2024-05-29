@@ -5,15 +5,10 @@ import Categorias from './components/Categorias';
 import Productos from './components/Productos';
 import DetalleProducto from './components/DetalleProducto';
 import Carrito from './components/Carrito';
-import pageCss from './page.module.css';
 
 const App = () => {
-    const [categoria, setCategoria] = useState(null); // Corrección aquí
+    const [categoria, setCategoria] = useState(null);
     const [idProductoSeleccionado, setIdProductoSeleccionado] = useState(null);
-    // const [elementosCarrito, setElementosCarrito] = useState(
-    //     JSON.parse(sessionStorage.getItem('elementosCarrito')) || []
-    // );
-
     const [elementosCarrito, setElementosCarrito] = useState([]);
 
     const agregarAlCarrito = (producto) => {
@@ -22,25 +17,31 @@ const App = () => {
         sessionStorage.setItem('elementosCarrito', JSON.stringify(nuevosElementosCarrito));
     };
 
-    useEffect(()=>{
-        if(elementosCarrito.length==0){
-            setElementosCarrito( JSON.parse(sessionStorage.getItem('elementosCarrito')) || [])
+    const vaciarCarrito = () => {
+        setElementosCarrito([]);
+        sessionStorage.removeItem('elementosCarrito');
+    };
+
+    useEffect(() => {
+        const elementosGuardados = JSON.parse(sessionStorage.getItem('elementosCarrito'));
+        if (elementosGuardados) {
+            setElementosCarrito(elementosGuardados);
         }
-    },[]);
-
-
-    
+    }, []);
 
     return (
         <div>
-            <h1 className={pageCss.description}>Tienda</h1>
+            <h1>Tienda</h1>
             <Categorias seleccionarCategoria={setCategoria} />
-            <Productos categoria={categoria} seleccionarProducto={setIdProductoSeleccionado} /> {/* Corrección aquí */}
+            <Productos categoria={categoria} seleccionarProducto={setIdProductoSeleccionado} />
             <DetalleProducto idProducto={idProductoSeleccionado} agregarAlCarrito={agregarAlCarrito} />
-            <Carrito elementosCarrito={elementosCarrito} />
+            <Carrito 
+                elementosCarrito={elementosCarrito} 
+                vaciarCarrito={vaciarCarrito} 
+            />
         </div>
     );
 };
-export default App;
 
+export default App;
 

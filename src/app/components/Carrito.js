@@ -1,6 +1,7 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
+import './globals.css';
 
-const Carrito = ({ elementosCarrito }) => {
+const Carrito = ({ elementosCarrito, vaciarCarrito }) => {
   const total = elementosCarrito.reduce((sum, item) => sum + item.price, 0);
 
   return (
@@ -14,8 +15,10 @@ const Carrito = ({ elementosCarrito }) => {
         ))}
       </ul>
       <p>Total: ${total.toFixed(2)}</p>
+      <button className="botones botones-vaciar" onClick={vaciarCarrito}>Vaciar Carrito</button>
     </div>
   );
 };
 
 export default Carrito;
+
