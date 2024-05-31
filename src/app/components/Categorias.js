@@ -12,11 +12,12 @@ const Categorias = ({ seleccionarCategoria }) => {
         }
         return response.json();
       })
-      .then(data => setCategorias(data))
+      .then(data => setCategorias(['all', ...data]))
       .catch(error => console.error('Error al obtener las categorias:', error));
   }, []);
 
   const nomCategorias = {
+    "all": "Todos los Artículos",
     "electronics": "Electrónicos",
     "jewelery": "Joyería",
     "men's clothing": "Ropa para Hombres",
@@ -25,10 +26,10 @@ const Categorias = ({ seleccionarCategoria }) => {
 
   return (
     <div>
-      <h2 className="titulos">Categorias</h2>
+      <h2 className="texto texto-titulo">Categorias</h2>
       <ul>
         {categorias.map((categoria) => (
-          <li key={categoria} onClick={() => seleccionarCategoria(categoria)}>{nomCategorias[categoria]}</li>
+          <li className="texto"key={categoria} onClick={() => seleccionarCategoria(categoria)}>{nomCategorias[categoria] || categoria}</li>
         ))}
       </ul>
     </div>

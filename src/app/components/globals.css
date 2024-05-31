@@ -10,7 +10,77 @@
     margin: 4px 2px;
     cursor: pointer;
   }
+
+  ul {
+    list-style-type: none;
+    padding: 0;
+  }
   
+  section {
+    display: flex;
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 20px; 
+  }
+  
+  li {
+    display: flex;
+    flex-direction: column; 
+    align-items: center; 
+    justify-content: center; 
+    border: 1px solid #ccc; 
+    padding: 10px; 
+    max-width: 200px; 
+    text-align: center; 
+  }
+
+.imagenes{
+  max-width: 100%; 
+  height: auto; 
+}
+
+.imagenes-detalle{
+  max-width: 350px; 
+  margin:20px;
+}
+  .texto{
+    font-family: "Montserrat", sans-serif;
+    font-optical-sizing: auto;
+    font-weight:100;
+    font-style:normal;
+  }
+
+  .texto-precio{
+    font-weight:bolder;
+    font-size: x-large;
+    color:#d32f2f;
+  }
+
+  .texto-detalle{
+    margin:20px;
+  }
+
+  .texto-detalle-titulo{
+    font-weight: bold;
+    color:#000483;
+  }
+
+  .texto-titulo{
+    font-size:xx-large;
+    color:blueviolet;
+    font-weight: bolder;
+  }
+
+  .detalles{
+    justify-content: center; 
+    display: flex;
+    max-width: 600px; 
+    align-items: center; 
+    border: 1px solid #000483; 
+    margin:auto;
+  }
+
+
   .botones:hover {
     background-color: #45a049;
   }
@@ -23,9 +93,8 @@
     background-color: #d32f2f; 
   }
 
-.titulos{
-    font-size: larger;
-    color:blueviolet;
+.categoria{
+  flex-direction: row; 
 }
 
 .titulos-carrito{

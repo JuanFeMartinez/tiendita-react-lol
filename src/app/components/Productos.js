@@ -5,7 +5,8 @@ const Productos = ({ categoria, seleccionarProducto }) => {
   const [productos, setProductos] = useState([]);
 
   useEffect(() => {
-    const url = categoria ? `https://fakestoreapi.com/products/category/${categoria}` : 'https://fakestoreapi.com/products'; 
+    
+    const url = categoria && categoria !== 'all' ? `https://fakestoreapi.com/products/category/${categoria}` : 'https://fakestoreapi.com/products'; 
     fetch(url)
       .then(response => {
         if (!response.ok) {
@@ -19,11 +20,17 @@ const Productos = ({ categoria, seleccionarProducto }) => {
 
   return (
     <div>
-      <h2 className="titulos">Productos</h2>
+      <h2 className="texto-titulo texto">Productos</h2>
       <ul>
+        <section>
         {productos.map((producto) => (
-          <li key={producto.id} onClick={() => seleccionarProducto(producto.id)}>{producto.title}</li>
+          <li className="texto" key={producto.id} onClick={() => seleccionarProducto(producto.id)}>
+            {producto.title}
+            <br></br>
+            <img className="imagenes" src={producto.image}></img>
+          </li>
         ))}
+        </section>
       </ul>
     </div>
   );
